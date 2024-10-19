@@ -15,13 +15,25 @@ class LoginRegisterController extends Controller
         return view('auth.login'); // Pastikan file view 'auth/login.blade.php' ada
     }
 
-public function userHome(){
-    return view('user.home');
-}
+public function userHome(Request $request) {
+        $search = $request->input('search');
+        
+        $data = Buku::where(function($query) use ($search) {
+            $query->where('judul_buku', 'LIKE', '%' .$search. '%');
+        })->paginate(5);
 
-public function adminHome(){
-    return view('admin.home');
-}
+        return view('user.home', compact('data'));
+    }
+
+public function adminHome(Request $request) {
+        $search = $request->input('search');
+        $data = User::where('level', 'admin')
+            ->where(function ($query) use ($search) {
+                $query->where('name', 'LIKE', '%' . $search . '%');
+            })
+            ->paginate(5);
+        return view('admin.home', compact('data'));
+    }
 
 
     public function register()

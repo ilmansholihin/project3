@@ -10,11 +10,10 @@
     <nav class="navbar navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="/">Politeknik Negeri Bengkalis
-                | D-IV Keamanan sistem informasi</a>
+                | D-IV Rakayasa Perangkat Lunak</a>
         </div>
     </nav>
     <div class="container">
-
         <div class="row mt-3">
             <div class="col">
                 <h4 class="text-secondary">Selamat Datang {{ Auth::user()->name }}</h4>
@@ -63,7 +62,6 @@
             </div>
         @endforeach
         {{ $data->links() }}
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
